@@ -1,6 +1,36 @@
 #include "sort.h"
 
 /**
+ * swap_nodes - A function that swaps two nodes in a doubly linked list
+ * @list: A pointer to a pointer to the head of the doubly linked list
+ * @n1: The pointer to the first node to swap
+ * @n2: The pointer to the second node to swap
+ * This program conforms to the betty documentation style
+ **/
+
+void swap_nodes(listint_t **list, listint_t **n1, listint_t **n2)
+{
+	listint_t *temp;
+
+	temp = (*n1)->prev;
+	(*n1)->prev = (*n2);
+	(*n2)->prev = temp;
+
+	if (temp)
+		temp->next = (*n2);
+
+	temp = (*n2)->next;
+	(*n2)->next = (*n1);
+	(*n1)->next = temp;
+
+	if (temp)
+		temp->prev = (*n1);
+
+	if (!(*n1)->prev)
+		*list = *n1;
+}
+
+/**
  * cocktail_sort_list - A function that sorts a doubly linked list of integers
  * in ascending order using the Cocktail Shaker Sort algorithm.
  * @list: A pointer to a pointer to the head of the doubly linked list
@@ -13,7 +43,7 @@ void cocktail_sort_list(listint_t **list)
 	int sorted = 0;
 
 	if (!list || !(*list) || !(*list)->next)
-	return;
+		return;
 
 	while (!sorted)
 {
@@ -42,34 +72,4 @@ void cocktail_sort_list(listint_t **list)
 }
 }
 }
-}
-
-/**
- * swap_nodes - A function that swaps two nodes in a doubly linked list
- * @list: A pointer to a pointer to the head of the doubly linked list
- * @n1: The pointer to the first node to swap
- * @n2: The pointer to the second node to swap
- * This program conforms to the betty documentation style
- **/
-
-void swap_nodes(listint_t **list, listint_t **n1, listint_t **n2)
-{
-	listint_t *temp;
-
-	temp = (*n1)->prev;
-	(*n1)->prev = (*n2);
-	(*n2)->prev = temp;
-
-	if (temp)
-	temp->next = (*n2);
-
-	temp = (*n2)->next;
-	(*n2)->next = (*n1);
-	(*n1)->next = temp;
-
-	if (temp)
-	temp->prev = (*n1);
-
-	if (!(*n1)->prev)
-	*list = *n1;
 }
