@@ -37,6 +37,8 @@ void swap_nodes(listint_t **list, listint_t *node);
 listint_t *get_dlistint_lelem(listint_t *h);
 void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
+void merge(int *array, int *temp, size_t left, size_t mid, size_t right);
+void merge_sort_recursive(int *array, int *temp, size_t left, size_t right);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void count_sort_LSD(int *array, size_t size, size_t lsd);
