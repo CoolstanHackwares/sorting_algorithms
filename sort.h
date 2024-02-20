@@ -32,7 +32,7 @@ void quicksort_recursive(int *array, int low, int high, size_t size);
 int lomuto_partition(int *array, int low, int high, size_t size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
-void swap_nodes(listint_t **list, listint_t *node);
+void swap_nodes(listint_t **list, listint_t **n1, listint_t **n2);
 listint_t *get_dlistint_lelem(listint_t *h);
 void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
