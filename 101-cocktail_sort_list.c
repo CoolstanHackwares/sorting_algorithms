@@ -9,36 +9,36 @@
 
 void cocktail_sort_list(listint_t **list)
 {
-	int swapped = 1;
 	listint_t *current;
+	int sorted = 0;
 
 	if (!list || !(*list) || !(*list)->next)
 	return;
 
-	while (swapped)
+	while (!sorted)
 {
-	swapped = 0;
+	sorted = 1;
 	for (current = *list; current->next != NULL; current = current->next)
 {
 	if (current->n > current->next->n)
 {
 	swap_nodes(list, &current, &current->next);
-	swapped = 1;
 	print_list(*list);
+	sorted = 0;
 }
 }
 
-	if (!swapped)
+	if (sorted)
 	break;
 
-	swapped = 0;
+	sorted = 1;
 	for (; current->prev != NULL; current = current->prev)
 {
 	if (current->n < current->prev->n)
 {
 	swap_nodes(list, &current->prev, &current);
-	swapped = 1;
 	print_list(*list);
+	sorted = 0;
 }
 }
 }
