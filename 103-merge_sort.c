@@ -1,84 +1,89 @@
 #include "sort.h"
 
 /**
- * merge - Merges two sub-arrays of array[].
- * @array: The array to be sorted
- * @temp: Temporary array for merging
- * @left: Index of the left sub-array
- * @mid: Index of the middle element
- * @right: Index of the right sub-array
- */
-void merge(int *array, int *temp, size_t left, size_t mid, size_t right)
+ * merge - A function that merges the splits from merge_sort
+ * @array: Array split to merge
+ * @low: lowest index of split
+ * @middle: middle index of split
+ * @high: high index of split
+ * @temp: temp array for merging
+ * This program conforms to the betty documentation style
+ **/
+
+void merge(int *array, int low, int middle, int high, int *temp)
 {
-	size_t i, j, k;
+	int i, j, k, l = 0, r = 0, n, left[4096], right[4096];
 
-	printf("[left]: ");
-	print_array(array + left, mid - left);
-
-	printf("[right]: ");
-	print_array(array + mid, right - mid);
-
-	i = left;
-	j = mid;
-	k = 0;
-
-	while (i < mid && j < right)
+	printf("Merging...\n");
+	i = low, j = middle + 1, k = l = 0;
+	while (i <= middle && j <= high)
 	{
 		if (array[i] <= array[j])
-			temp[k++] = array[i++];
+			temp[k] = left[l] = array[i], k++, i++, l++;
 		else
-			temp[k++] = array[j++];
+			temp[k] = right[r] = array[j], k++, j++, r++;
 	}
-
-	while (i < mid)
-		temp[k++] = array[i++];
-
-	while (j < right)
-		temp[k++] = array[j++];
-
-	for (i = 0, k = left; k < right;)
-		array[k++] = temp[i++];
-
-	printf("[Done]: ");
-	print_array(array + left, right - left);
+	while (i <= middle)
+		temp[k] = left[l] = array[i], k++, i++, l++;
+	while (j <= high)
+		temp[k] = right[r] = array[j], k++, j++, r++;
+	printf("[left]: ");
+	for (n = 0; n < l; n++)
+		(n == 0) ? printf("%d", left[n]) : printf(", %d", left[n]);
+	printf("\n[right]: ");
+	for (n = 0; n < r; n++)
+		(n == 0) ? printf("%d", right[n]) : printf(", %d", right[n]);
+	printf("\n[Done]: ");
+	for (i = low; i <= high; i++)
+	{
+		array[i] = temp[i - low], printf("%d", array[i]);
+		if (i != high)
+			printf(", ");
+		else
+			printf("\n");
+	}
 }
 
 /**
- * merge_sort_recursive - Recursively sorts an array using Merge sort algorithm
- * @array: The array to be sorted
- * @temp: Temporary array for merging
- * @left: Index of the leftmost element
- * @right: Index of the rightmost element
- */
-void merge_sort_recursive(int *array, int *temp, size_t left, size_t right)
+ * merge_sort_recursive - A recursive function utilizing the merge sort algo
+ * @array: Array
+ * @low: Lowest index of split
+ * @high: Highest index of split
+ * @temp: Temp array for merging
+ * This program conforms to the betty documentation style
+ **/
+
+void merge_sort_recursive(int *array, int low, int high, int *temp)
 {
-	if (right - left <= 1)
-		return;
+	int middle;
 
-	size_t mid = left + (right - left) / 2;
-
-	merge_sort_recursive(array, temp, left, mid);
-	merge_sort_recursive(array, temp, mid, right);
-	merge(array, temp, left, mid, right);
+	if (low < high)
+	{
+		middle = ((high + low) / 2);
+		merge_sort_recursive(array, low, middle, temp);
+		merge_sort_recursive(array, middle + 1, high, temp);
+		merge(array, low, middle, high, temp);
+	}
 }
 
 /**
- * merge_sort - Sorts an array of integers in ascending order using
- * Merge sort algorithm
- * @array: The array to be sorted
- * @size: Size of the array
- */
+ * merge_sort - A function that sorts array with merge sort algorithm
+ * @array: The array to sort
+ * @size: The size of array to sort
+ * This program conforms to the betty documentation style
+ **/
+
 void merge_sort(int *array, size_t size)
 {
+	int *temp;
+
 	if (array == NULL || size < 2)
 		return;
 
-	int *temp = malloc(size * sizeof(int));
-
+	temp = malloc(sizeof(int) * size);
 	if (temp == NULL)
 		return;
 
-	merge_sort_recursive(array, temp, 0, size);
-
+	merge_sort_recursive(array, 0, size - 1, temp);
 	free(temp);
 }
