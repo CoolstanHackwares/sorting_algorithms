@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 #define INCREMENT 1
 #define DECREMENT -1
@@ -42,8 +43,6 @@ void merge_sort_recursive(int *array, int low, int high, int *temp);
 void heap_sort(int *array, size_t size);
 void heapify(int *array, int heap_size, int root_index, int size);
 void radix_sort(int *array, size_t size);
-int getMax(int *array, size_t size);
-void countSort(int *array, size_t size, int exp)
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 
