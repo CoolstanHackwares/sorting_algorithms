@@ -1,15 +1,13 @@
 #include "sort.h"
 
 /**
- * merge - A function that merges two sub-arrays of array[].
+ * merge - Merges two sub-arrays of array[].
  * @array: The array to be sorted
  * @temp: Temporary array for merging
  * @left: Index of the left sub-array
  * @mid: Index of the middle element
  * @right: Index of the right sub-array
- * This program conforms to the betty documentation style
- **/
-
+ */
 void merge(int *array, int *temp, size_t left, size_t mid, size_t right)
 {
 	size_t i, j, k;
@@ -46,15 +44,12 @@ void merge(int *array, int *temp, size_t left, size_t mid, size_t right)
 }
 
 /**
- * merge_sort_recursive - A function that recursively sorts an array using the
- * Merge sort algorithm
+ * merge_sort_recursive - Recursively sorts an array using Merge sort algorithm
  * @array: The array to be sorted
  * @temp: Temporary array for merging
  * @left: Index of the leftmost element
  * @right: Index of the rightmost element
- * This program conforms to the betty documentation style
- **/
-
+ */
 void merge_sort_recursive(int *array, int *temp, size_t left, size_t right)
 {
 	if (right - left <= 1)
@@ -68,13 +63,11 @@ void merge_sort_recursive(int *array, int *temp, size_t left, size_t right)
 }
 
 /**
- * merge_sort - A function that sorts an array of integers in ascending order
- * using Merge sort algorithm
+ * merge_sort - Sorts an array of integers in ascending order using
+ * Merge sort algorithm
  * @array: The array to be sorted
  * @size: Size of the array
- * This program conforms to the betty documentation style
- **/
-
+ */
 void merge_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
