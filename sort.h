@@ -43,6 +43,7 @@ void merge_sort_recursive(int *array, int low, int high, int *temp);
 void heap_sort(int *array, size_t size);
 void heapify(int *array, int heap_size, int root_index, int size);
 void radix_sort(int *array, size_t size);
+void count_sort_LSD(int *array, size_t size, size_t lsd);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 
