@@ -9,29 +9,44 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *temp, *prev;
+	listint_t *current, *temp, *previous;
+	int flag;
 
-	if (!list || !(*list) || !(*list)->next) 
+	if (!list || !(*list) || !(*list)->next)
 	return;
+	current = (*list)->next;
 
-	for(current = (*list)->next; current; current = current->next)
+	while (current)
 {
-	prev = current->prev;
-	while(prev && current->n < prev->n)
-{
-	if(prev->prev)
-	prev->prev->next = current;
-	else 
-	*list = current;
+	flag = 0;
+	temp = current;
+	previous = temp->prev;
 
-	current->prev = prev->prev;
-	prev->prev = current;
-	current->next = prev;
+	while (previous && temp->n < previous->n)
+{
+	if (previous->prev)
+	previous->prev->next = temp;
+	else
+	*list = temp;
+
+	if (temp->next)
+	temp->next->prev = previous;
+	previous->next = temp->next;
+	temp->prev = previous->prev;
+	temp->next = previous;
+	previous->prev = temp;
 
 	print_list(*list);
 
-	current = prev;
-	prev = current->prev;
+	if (temp->prev)
+	previous = temp->prev;
+	else
+	break;
+	flag = 1;
 }
+	if (flag)
+	current = temp;
+	else
+	current = current->next;
 }
 }
