@@ -38,9 +38,6 @@ void swap_nodes(listint_t **list, listint_t *node);
 listint_t *get_dlistint_lelem(listint_t *h);
 void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
-void merge_sort_recursive(int *subarr, int *buff, size_t front, size_t back);
-void merge_subarray(int *subarr, int *buff, size_t front, size_t mid,
-		size_t back);
 void heap_sort(int *array, size_t size);
 void heapify(int *array, int heap_size, int root_index, int size);
 void radix_sort(int *array, size_t size);
