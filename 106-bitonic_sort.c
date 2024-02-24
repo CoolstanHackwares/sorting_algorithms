@@ -78,7 +78,7 @@ void bit_sort_rec(int *array, int low, int count, int dir, size_t size)
 	if (count > 1)
 {
 	k = count / 2;
-	printf("Merging [%lu/%lu] ", count, (int)size);
+	printf("Merging [%lu/%lu] ", (unsigned long)count, (unsigned long)size);
 	if (dir == 1)
 		printf("(UP):\n");
 	else
@@ -87,7 +87,7 @@ void bit_sort_rec(int *array, int low, int count, int dir, size_t size)
 	bit_sort_rec(array, low, k, 1, size);
 	bit_sort_rec(array, low + k, k, 0, size);
 	bitonic_merge(array, low, count, dir, size);
-	printf("Result [%lu/%lu] ", count, (int)size);
+	printf("Result [%lu/%lu] ", (unsigned long)count, (unsigned long)size);
 	if (dir == 1)
 	printf("(UP):\n");
 	else
