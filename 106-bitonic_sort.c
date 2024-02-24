@@ -16,7 +16,7 @@ void swap_integer(int *l, int *r)
 	*r = temp;
 }
 
-/*
+/**
  * bitonic_sort - A function that sorts an array of integers in ascending order
  * using the Bitonic sort algorithm.
  * @array: The array to be sorted.
