@@ -1,8 +1,8 @@
 #include "sort.h"
 
 /**
- * bitonic_sort - A function that sorts an array of integers in ascending order using
- * the Bitonic sort algorithm.
+ * bitonic_sort - A function that sorts an array of integers in ascending order
+ * using the Bitonic sort algorithm.
  * @array: The array to be sorted.
  * @size: The size of the array.
  * This program conforms to the betty documentation style
@@ -19,7 +19,7 @@ void bitonic_sort(int *array, size_t size)
  * @low: Starting index of the subarray to be merged.
  * @count: Size of the subarray to be merged.
  * @dir: 1 if merging in ascending order, 0 if descending
- * This program conforms to the betty documentation style 
+ * This program conforms to the betty documentation style
  **/
 
 void bitonic_merge(int *array, size_t low, size_t count, int dir)
