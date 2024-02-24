@@ -15,33 +15,8 @@ void swap(int *a, int *b)
 }
 
 /**
- * quick_sort_hoare_recursive - recursively sorts a partition of an array
- * using the Quick sort algorithm with Hoare partition scheme
- * @array: array to be sorted
- * @size: size of the array
- * @low: starting index of the partition
- * @high: ending index of the partition
- * This program conforms to the betty documentation style
- **/
-
-void quick_sort_hoare_recursive(int *array, size_t size, int low, int high)
-{
-	if (low < high)
-	{
-		int pivot = hoare_partition(array, size, low, high);
-
-		printf("Partition: ");
-		print_array(array + low, high - low + 1);
-
-		quick_sort_hoare_recursive(array, size, low, pivot);
-		quick_sort_hoare_recursive(array, size, pivot + 1, high);
-	}
-}
-
-/**
- * hoare_partition - partitions the array using Hoare scheme
+ * hoare_partition - A function that partitions an array using Hoare scheme
  * @array: array to be partitioned
- * @size: size of the array
  * @low: starting index of the partition
  * @high: ending index of the partition
  *
@@ -49,31 +24,52 @@ void quick_sort_hoare_recursive(int *array, size_t size, int low, int high)
  * This program conforms to the betty documentation style
  **/
 
-int hoare_partition(int *array, size_t size, int low, int high)
+int hoare_partition(int *array, int low, int high)
 {
-	int pivot = array[high];
+	int pivot = array[low];
 	int i = low - 1, j = high + 1;
 
 	while (1)
-{
-	do
-{
-	i++;
-}
-	while (array[i] < pivot);
+	{
+		do
+		{
+			i++;
+		}
+		while (array[i] < pivot);
 
-	do
+		do
+		{
+			j--;
+		}
+		while (array[j] > pivot);
+
+		if (i >= j)
+			return (j);
+
+		swap(&array[i], &array[j]);
+	}
+}
+
+/**
+ * quick_sort_hoare_recursive - A function that recursively sorts a partition
+ * of an array using the Quick sort algorithm with Hoare partition scheme
+ * @array: array to be sorted
+ * @low: starting index of the partition
+ * @high: ending index of the partition
+ * This program conforms to the betty documentation style
+ **/
+
+void quick_sort_hoare_recursive(int *array, int low, int high)
 {
-	j--;
-}
-	while (array[j] > pivot);
+	int pivot;
 
-	if (i >= j)
-	return (j);
+	if (low < high)
+	{
+		pivot = hoare_partition(array, low, high);
 
-	swap(array + i, array + j);
-	print_array(array, size);
-}
+		quick_sort_hoare_recursive(array, low, pivot);
+		quick_sort_hoare_recursive(array, pivot + 1, high);
+	}
 }
 
 /**
@@ -89,5 +85,5 @@ void quick_sort_hoare(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	quick_sort_hoare_recursive(array, size, 0, size - 1);
+	quick_sort_hoare_recursive(array, 0, size - 1);
 }
