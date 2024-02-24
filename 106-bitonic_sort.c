@@ -16,7 +16,7 @@ void swap_integer(int *l, int *r)
 	*r = temp;
 }
 
-/**
+/*
  * bitonic_sort - A function that sorts an array of integers in ascending order
  * using the Bitonic sort algorithm.
  * @array: The array to be sorted.
@@ -41,9 +41,9 @@ void bitonic_sort(int *array, size_t size)
  * This program conforms to the betty documentation style
  **/
 
-void bitonic_merge(int *array, size_t low, size_t count, int dir, size_t size)
+void bitonic_merge(int *array, int low, int count, int dir, size_t size)
 {
-	size_t i, k;
+	int i, k;
 
 	if (count > 1)
 {
@@ -52,13 +52,9 @@ void bitonic_merge(int *array, size_t low, size_t count, int dir, size_t size)
 	for (i = low; i < low + k; i++)
 {
 	if (((array[i] > array[i + k]) && dir == 1) ||
-		(dir == 0 && (array[i] < array[i + k])))
-{
+	(dir == 0 && (array[i] < array[i + k])))
 	swap_integer(&array[i], &array[i + k]);
-	print_array(array, count);
 }
-}
-
 	/* Recursively merge two halves */
 	bitonic_merge(array, low, k, dir, size);
 	bitonic_merge(array, low + k, k, dir, size);
@@ -75,23 +71,23 @@ void bitonic_merge(int *array, size_t low, size_t count, int dir, size_t size)
  * This program conforms to the betty documentation style
  **/
 
-void bit_sort_rec(int *array, size_t low, size_t count, int dir, size_t size)
+void bit_sort_rec(int *array, int low, int count, int dir, size_t size)
 {
-	size_t k;
+	int k;
 
 	if (count > 1)
 {
 	k = count / 2;
-	printf("Merging [%lu/%lu] ", count, size);
+	printf("Merging [%lu/%lu] ", count, (int)size);
 	if (dir == 1)
-	printf("(UP):\n");
+		printf("(UP):\n");
 	else
-	printf("(DOWN):\n");
+		printf("(DOWN):\n");
 	print_array(array + low, count);
 	bit_sort_rec(array, low, k, 1, size);
 	bit_sort_rec(array, low + k, k, 0, size);
 	bitonic_merge(array, low, count, dir, size);
-	printf("Result [%lu/%lu] ", count, size);
+	printf("Result [%lu/%lu] ", count, (int)size);
 	if (dir == 1)
 	printf("(UP):\n");
 	else
