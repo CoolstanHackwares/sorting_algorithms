@@ -5,6 +5,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+ * enum kind_e - A function that represents the four kinds of playing cards.
+ * @SPADE: Spade kind.
+ * @HEART: Heart kind.
+ * @CLUB: Club kind.
+ * @DIAMOND: Diamond kind.
+ * This program conforms to the betty documentation style
+ **/
+
 typedef enum kind_e
 {
 	SPADE = 0,
@@ -13,11 +22,26 @@ typedef enum kind_e
 	DIAMOND
 } kind_t;
 
+/**
+ * struct card_s - A function that represents a playing card.
+ * @value: The value of the card (e.g., "Ace", "2", ..., "King").
+ * @kind: The kind of the card (SPADE, HEART, CLUB, DIAMOND).
+ * This program conforms to the betty documentation style
+ **/
+
 typedef struct card_s
 {
 	const char *value;
 	const kind_t kind;
 } card_t;
+
+/**
+ * struct deck_node_s - Represents a node in a deck of cards.
+ * @card: Pointer to the card of the node.
+ * @prev: Pointer to the previous node in the deck.
+ * @next: Pointer to the next node in the deck.
+ * This program conforms to the betty documentation style
+ **/
 
 typedef struct deck_node_s
 {
