@@ -2,8 +2,8 @@
 
 /**
  * swap - A function that swaps two elements in an array
- * @a: pointer to the first element
- * @b: pointer to the second element
+ * @a: Pointer to the first element
+ * @b: Pointer to the second element
  * This program conforms to the betty documentation style
  **/
 
@@ -15,12 +15,12 @@ void swap(int *a, int *b)
 }
 
 /**
- * hoare_partition - A function that partitions an array using Hoare scheme
- * @array: array to be partitioned
- * @low: starting index of the partition
- * @high: ending index of the partition
+ * hoare_partition - A function that partitions an array using the Hoare scheme
+ * @array: Array to be partitioned
+ * @low: Starting index of the partition
+ * @high: Ending index of the partition
  *
- * Return: index of the pivot after partitioning
+ * Return: Index of the pivot after partitioning
  * This program conforms to the betty documentation style
  **/
 
@@ -51,11 +51,11 @@ int hoare_partition(int *array, int low, int high)
 }
 
 /**
- * quick_sort_hoare_recursive - A function that recursively sorts a partition
- * of an array using the Quick sort algorithm with Hoare partition scheme
- * @array: array to be sorted
- * @low: starting index of the partition
- * @high: ending index of the partition
+ * quick_sort_hoare_recursive - Recursively sorts a partition of an array
+ * using quick sort with horare partition scheme
+ * @array: Array to be sorted
+ * @low: Starting index of the partition
+ * @high: Ending index of the partition
  * This program conforms to the betty documentation style
  **/
 
@@ -73,13 +73,12 @@ void quick_sort_hoare_recursive(int *array, int low, int high)
 }
 
 /**
- * quick_sort_hoare - sorts an array of integers in ascending order
+ * quick_sort_hoare - Sorts an array of integers in ascending order
  * using the Quick sort algorithm with Hoare partition scheme
- * @array: array to be sorted
- * @size: size of the array
+ * @array: Array to be sorted
+ * @size: Size of the array
  * This program conforms to the betty documentation style
  **/
-
 void quick_sort_hoare(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
